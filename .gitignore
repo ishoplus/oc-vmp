@@ -1,0 +1,14 @@
+# Local development data
+data/global_state.json
+web/data.js
+data/dialogue.jsonl
+data/thinking.lock
+data/tasks/
+data/history/
+
+# Environment
+.DS_Store
+node_modules/
+venv/
+__pycache__/
+*.log

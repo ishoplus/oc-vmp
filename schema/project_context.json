@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ProjectContext",
+  "type": "object",
+  "properties": {
+    "project_id": { "type": "string" },
+    "name": { "type": "string" },
+    "vision": { "type": "string", "description": "The overall goal of the project" },
+    "active_tasks": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of task IDs currently being worked on"
+    },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "environment": {
+      "type": "object",
+      "properties": {
+        "workspace_root": { "type": "string" },
+        "tech_stack": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "required": ["project_id", "name", "vision"]
+}

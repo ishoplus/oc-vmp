@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Task",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the task"
+    },
+    "title": {
+      "type": "string",
+      "description": "Short summary of the task"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed explanation of what needs to be done"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["todo", "in_progress", "blocked", "done", "cancelled"],
+      "default": "todo"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "IDs of tasks that must be completed before this one"
+    },
+    "assignee": {
+      "type": "string",
+      "description": "Name or ID of the Agent/Human assigned to the task"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Extra data such as file paths, git branch, etc."
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  },
+  "required": ["id", "title", "status"]
+}

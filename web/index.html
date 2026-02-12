@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumi - OpenClaw 指揮中心</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <nav>
+        <div class="logo">LUMI <span>OC-VMP</span></div>
+        <div class="nav-links">
+            <button class="nav-btn active" data-tab="dashboard">全景看板</button>
+            <button class="nav-btn" data-tab="kanban">任務看板</button>
+            <button class="nav-btn" data-tab="explorer">文件預覽</button>
+            <button class="nav-btn" data-tab="dialogue">通訊中心</button>
+            <button class="nav-btn" data-tab="automation">自動化任務</button>
+            <button class="nav-btn" data-tab="workflow">工作流</button>
+        </div>
+        <div class="status-indicator">
+            <div id="thinking-indicator" class="thinking-dot hide"></div>
+            <div class="status-badge" id="last-update">Last Scan: Loading...</div>
+        </div>
+    </nav>
+
+    <main>
+        <div id="tab-dashboard" class="tab-content active">
+            <header>
+                <h1>項目全景看板</h1>
+                <p>照亮 OpenClaw 空間中的每一個角落</p>
+            </header>
+            <section id="stats-grid">
+                <div class="stat-card">
+                    <span class="label">總項目數</span>
+                    <span class="value" id="project-count">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="label">活躍中</span>
+                    <span class="value" id="active-count">0</span>
+                </div>
+            </section>
+            <section id="project-list">
+                <div class="loading">正在感應工作空間數據...</div>
+            </section>
+        </div>
+
+        <div id="tab-dialogue" class="tab-content">
+            <header>
+                <h1>通訊中心 (Comm Center)</h1>
+                <p>與 Lumi 的互動歷史記錄</p>
+            </header>
+            <div class="chat-container">
+                <div id="chat-messages" class="chat-messages"></div>
+                <div class="chat-input-area">
+                    <input type="text" placeholder="當前為唯讀模式，請透過主頻道（Telegram）發送指令" disabled>
+                    <button disabled>發送</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-automation" class="tab-content">
+            <header>
+                <h1>自動化任務 (Automation)</h1>
+                <p>系統排程與後台任務監控</p>
+            </header>
+            <div id="cron-list" class="automation-grid">
+                <!-- Cron cards will be injected here -->
+            </div>
+        </div>
+
+        <div id="tab-kanban" class="tab-content">
+            <header>
+                <h1>任務看板 (Kanban)</h1>
+                <div class="project-selector">
+                    <select class="p-select" data-target="kanban"></select>
+                </div>
+            </header>
+            <div class="kanban-board">
+                <div class="kanban-column" id="col-todo">
+                    <h3>待處理 (To-Do)</h3>
+                    <div class="card-list"></div>
+                </div>
+                <div class="kanban-column" id="col-in-progress">
+                    <h3>進行中 (In Progress)</h3>
+                    <div class="card-list"></div>
+                </div>
+                <div class="kanban-column" id="col-done">
+                    <h3>已完成 (Done)</h3>
+                    <div class="card-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-explorer" class="tab-content">
+            <header>
+                <h1>文件預覽 (Explorer)</h1>
+                <div class="project-selector">
+                    <select class="p-select" data-target="explorer"></select>
+                </div>
+            </header>
+            <div class="explorer-container">
+                <div class="file-tree" id="file-tree"></div>
+                <div class="file-viewer">
+                    <div class="viewer-header" id="viewer-filename">請選擇檔案</div>
+                    <div id="viewer-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-workflow" class="tab-content">
+            <header>
+                <h1>工作流 (Workflow)</h1>
+                <p>視覺化 Agent 執行邏輯與階段流轉</p>
+            </header>
+            <div id="workflow-viz">
+                <div class="placeholder-viz">正在構建邏輯拓撲圖...</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Lumi System | Inscribed with Soul</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
